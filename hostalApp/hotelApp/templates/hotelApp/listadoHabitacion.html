@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <title>Document</title>
+    <title>Servicios Habitaciones</title>
 </head>
-<body class="alert alert-success display-1">
+<body >
+    <div class="alert alert-success display-1">Listado de habitacion</div>
     <table class="table-bordered">
         <thead>
             <tr>
                 <th>habitacion</th>
                 <th>capacidad</th>
                 <th>precio</th>
-                <th>terraza</th>
                 <th>cocina</th>
                 <th>terraza</th>
                 <th>Acciones</th>
@@ -23,22 +23,21 @@
         <tbody>
             {% for habit in habitacion %}
             <tr>
-                <td>{habit.habitacion}</td>
-                <td>{habit.capacidad}</td>
-                <td>{habit.precio}</td>
-                <td>{habit.terraza}</td>
-                <td>{habit.cocina}</td>
-                <td>{habit.terraza}</td>
+                <td>{{habit.habitacion}}</td>
+                <td>{{habit.capacidad}}</td>
+                <td>{{habit.precio}}</td>
+                <td>{{habit.terraza}}</td>
+                <td>{{habit.cocina}}</td>
                 <td>
-                    <a href="{% url 'editarHabitacion' habit.id %}" class="btn btn-primary">Editar</a>
-                    <a href="{% url 'eliminarHabitacion' habit.id %}" class="btn btn-danger">Eliminar</a>
+                    <button><a href="{% url 'editarHabitacion' habit.id %}" class="btn btn-primary">Editar</a> </button>
+                    <button><a href="{% url 'eliminarHabitacion' habit.id %}" class="btn btn-danger">Eliminar</a></button>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
    
-    <a href="{% url 'crearHabitacion' %}" class="btn btn-warning">Crear nuevo Hotel</a>
+    <button><a href="{% url 'crearHabitacion' %}" class="btn btn-warning">Crear nuevo Hotel</a></button>
 
 </body>
 </html>

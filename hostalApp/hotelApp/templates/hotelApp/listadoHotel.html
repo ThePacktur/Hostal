@@ -11,40 +11,37 @@
 <body>
     <div class="alert alert-success display-1">Listado de hoteles</div>
     
-
-    <table class="table-bordered">
-            <thead>
+    <h2>Listado de Hoteles</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Direccion</th>
+                <th>Nombre Hotel</th>
+                <th>Número de Habitación</th>
+                <th>Tarifa</th>
+                <th>Teléfono</th>
+                <th>Numero Hotel</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hotel in hoteles %}
                 <tr>
-                    <th>Nombre del Hotel </th>
-                    <th>Direccion del Hotel </th>
-                    <th>Habitaciones </th>
-                    <th>Tarifa </th>
-                    <th>Telefono Hotel </th>
-                    <th>Mascota </th>
-                    <th>Numero </th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody> 
-                {% for hoteles in hotel %}
-                <tr>
-                    <td>{{ hoteles.nombreHotel }}</td>
-                    <td>{{ hoteles.direccionHotel }}</td>
-                    <td>{{ hoteles.habitacionHotel }}</td>
-                    <td>{{ hoteles.tarifaHotel }}</td>
-                    <td>{{ hoteles.telefonoHotel }}</td>
-                    <td>{{ Hoteles.mascotaHotel }}</td>
-                    <td>{{ hoteles.numeroHotel }}</td>
+                    <td>{{ hotel.direccionHotel }}</td>
+                    <td>{{ hotel.nombreHotel }}</td>
+                    <td>{{ hotel.habitacionHotel }}</td>
+                    <td>{{ hotel.tarifaHotel }}</td>
+                    <td>{{ hotel.phoneHotel }}</td>
+                    <td>{{ hotel.numberHotel }}</td>
                     <td>
-                        <a href="{% url 'editarHotel' hoteles.id %}" class="btn btn-primary">Editar</a>
-                        <a href="{% url 'eliminarHotel' hoteles.id %}" class="btn btn-danger">Eliminar</a>
+                        <button><a href="{% url 'editarHotel' hotel.id %}">Editar</a></button>
+                        <button><a href="{% url 'eliminarHotel' hotel.id %}">Eliminar</a></button>
                     </td>
                 </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-       
-        <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear nuevo Hotel</a>
-    
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crearHotel' %}">Crear Hotel</a>
+{% endblock %}
 </body>
 </html>

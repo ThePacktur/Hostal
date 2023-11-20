@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <title>Document</title>
+    <title>Listado Pasajeros</title>
 </head>
 <body>
     <div class="alert alert-success display-1">Listado de Pasajeros</div>
@@ -25,8 +25,8 @@
                 {% for pasajeros in pasajero %}
                 <tr>
                     <td>{{ pasajeros.rutClient }}</td>
-                    <td>{{ pasajeros.nombreclient }}</td>
-                    <td>{{ pasajeros.apellidoClient }}</td>
+                    <td>{{ pasajeros.nombreClient }}</td>
+                    <td>{{ pasajeros.apellidoClint }}</td>
                     <td>{{ pasajeros.fonoClient }}</td>
                     <td>{{ pasajeros.llegadaClient }}</td>
                     <td>{{ pasajeros.salidaClient }}</td>
@@ -39,7 +39,7 @@
             </tbody>
         </table>
        
-        <a href="{% url 'crearPasajero' %}" class="btn btn-warning">Crear nuevo Hotel</a>
+        <a href="{% url 'crearPasajero' %}" class="btn btn-warning">Crear nuevo Passajero</a>
     
 </body>
 </html>

@@ -1,7 +1,7 @@
 from django import forms
-from .models import Hotel   
-from .models import Habitacion
-from .models import Pasajero
+from hotelApp.models import Hotel   
+from hotelApp.models import Habitacion
+from hotelApp.models import Pasajero
 
 class HostalForm(forms.ModelForm):
     class Meta:
