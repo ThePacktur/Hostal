@@ -1,97 +1,89 @@
 from django.shortcuts import render, redirect
 from hotelApp.models import Hotel
-from hotelApp.models import Habitacion
-from hotelApp.models import Pasajero
 from hotelApp.forms import HostalForm
-from hotelApp.forms import PasajeroForm
+from hotelApp.models import Habitacion
 from hotelApp.forms import HabitacionForm
+from hotelApp.models import Pasajero
+from hotelApp.forms import PasajeroForm
+
 
 # Create your views here.
 
 def index(request):
     return render(request,'hotelApp/index.html')
 
-def listadoHostal(request):
-    hostal = Hotel.objects.all()
-    data = {'hostal':hostal}
-    return render(request, 'hotelApp/hotel.html',data)
+def listaHotel(request):    
+    hoteles = Hotel.objects.all()
+    
+    return render(request, 'hotelApp/listadoHotel.html',{'hoteles':hoteles})
 
-def agregarHostal(request):
+def crearHotel(request):
     form = HostalForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('listadoHostal')
-    return render(request,'hotelApp/agregarHotel.html', {'form':form})
+        return redirect('listaHotel')
+    return render(request, 'hotelApp/crearHotel.html', {'form':form})
 
-
-def eliminarHostal(request,id):
-    hostal = Hotel.objects.get(id=id)
-    hostal.delete()
-    return redirect('listadoHostal')
-
-
-
-def listadoHabitacion(request):
-    habitacion = Habitacion.objects.all()
-    data = {'habitacion':habitacion}
-    return render(request,'hotelApp/habitaciones.html',data)
-
-def agregarHabitacion(request):
-    
-    form = HabitacionForm(request.POST or None)
-    if form.is_valid() and request.POST:
-            form.save()
-            return redirect('listadoHabitacion')
-    return render(request, 'hotelApp/agregarHabitacion.html',{'form':form})
-
-def eliminarHabitacion(request, id):
-    habitacion = Habitacion.objects.get(id=id)
-    habitacion.delete()
-    return redirect('listadoHabitacion')
-
-
-def listadoPasajero(request):
-    pasajero = Pasajero.objects.all()   
-    data = {'pasajero':pasajero}
-    return render(request,'hotelApp/pasajero.html',data)
-
-
-
-def agregarPasajero(request):
-     form = HabitacionForm(request.POST or None)
-     if form.is_valid():
-            form.save()
-            return redirect('listadoPasajero')
-     return render(request, 'hotelApp/agregarPasajeros.html',{'form':form})
-
-
-def eliminarPasajero(request,id):
-    pasajeros = Pasajero.objects.get(id=id)
-    pasajeros.delete()
-    return redirect('listadoPasajero')
-
-def actualizarHostal(request,id):
+def editarHotel(request, id):
     hotel = Hotel.objects.get(id=id)
     form = HostalForm(request.POST or None, instance=hotel)
     if form.is_valid() and request.POST:
         form.save()
-        return redirect('listadoHostal')
-    return render(request,'hotel/agregarHotel.html', {'form':form, 'hotel':hotel })
+        return redirect('listaHotel')
+    return render(request,'hotelApp/editarHotel.html', {'form':form, 'hotel':hotel })
 
-def actualizarPasajero(request,id):
-    pasajero = Pasajero.objects.get(id=id)
-    form = PasajeroForm(request.POST or None, instance=pasajero)
+def eliminarHotel(request,id):
+    hotel = Hotel.objects.get(id=id)
+    hotel.delete()
+    return redirect('listaHotel')
+
+def listaHabitacion(request):    
+    habitaciones = Habitacion.objects.all()
+    
+    return render(request, 'hotelApp/listadoHabitacion.html',{'habitaciones':habitaciones})
+
+def crearHabitacion(request):
+    form = HabitacionForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listaHabitacion')
+    return render(request, 'hotelApp/crearHabitacion.html', {'form':form})
+
+def editarHabitacion(request, id):
+    habitaciones = Habitacion.objects.get(id=id)
+    form = HabitacionForm(request.POST or None, instance=habitaciones)
     if form.is_valid() and request.POST:
         form.save()
-        return redirect('listadoPasajero')
-    return render(request,'hotelApp/agregarPasajero.html', {'form':form, 'pasajero':pasajero })
+        return redirect('listahabitacion')
+    return render(request,'hoteles/editarHabitacion.html', {'form':form, 'habitaciones':habitaciones })
 
-def actualizarHabitacion(request, id):
-    habitacion = HabitacionForm.objects.get(id=id)
-    form = HabitacionForm(request.POST or None, instance=habitacion)
-    if form.is_valid() and request.POST:
-        form.save()
-        return redirect('listadoHabitacion')
-    return render(request,'hotelApp/agregarHabitacion.html', {'form':form, 'habitacion':habitacion })
+def eliminarHabitacion(request, id):
+    habitacion = Habitacion.objects.get(id=id)
+    habitacion.delete()
+    return redirect('listaHabitacion')
 
     
+
+def listaPasajero(request):
+    pasajeros = Pasajero.objects.all()
+    return render(request, 'hotelApp/listadoPasajero.html', {'pasajeros': pasajeros})
+
+def crearPasajero(request):
+    form = PasajeroForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listaPasajero')
+    return render(request, 'hotelApp/crearPasajero.html', {'form':form})
+
+def editarPasajero(request, id):
+    pasajeros = Pasajero.objects.get(id=id)
+    form = PasajeroForm(request.POST or None, instance=pasajeros)
+    if form.is_valid() and request.POST:
+        form.save()
+        return redirect('listaPasajero')
+    return render(request,'hotelApp/editarPasajero.html', {'form':form, 'pasajeros':pasajeros })
+
+def eliminarPasajero(request, id):
+    pasajeros = Pasajero.objects.get(id=id)
+    pasajeros.delete()
+    return redirect('listaPasajero')

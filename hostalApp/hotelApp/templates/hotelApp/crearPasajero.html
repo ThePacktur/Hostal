@@ -9,11 +9,13 @@
 </head>
 <body>
     
-    <h1>Eliminar Habitaciones</h1>
-    <p> Estas seguro que desea eliminar el hotel "{{habit.habitacion}}"?</p>
+    <h1>Crear Pasajero</h1>
     <form method="POST">
         {% csrf_token %}
-        <button type="submit" class="btn-danger">Eliminar</button>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
     </form>
+
 </body>
 </html>

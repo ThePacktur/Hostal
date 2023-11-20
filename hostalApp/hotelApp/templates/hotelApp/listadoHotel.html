@@ -10,7 +10,9 @@
 </head>
 <body>
     <div class="alert alert-success display-1">Listado de hoteles</div>
-        <table class="table-bordered">
+    
+
+    <table class="table-bordered">
             <thead>
                 <tr>
                     <th>Nombre del Hotel </th>
@@ -23,7 +25,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 {% for hoteles in hotel %}
                 <tr>
                     <td>{{ hoteles.nombreHotel }}</td>
@@ -31,18 +33,18 @@
                     <td>{{ hoteles.habitacionHotel }}</td>
                     <td>{{ hoteles.tarifaHotel }}</td>
                     <td>{{ hoteles.telefonoHotel }}</td>
-                    <td>{{ hoteles.mascotaHotel }}</td>
+                    <td>{{ Hoteles.mascotaHotel }}</td>
                     <td>{{ hoteles.numeroHotel }}</td>
                     <td>
-                        <a href="{% url 'agregarHostal' hotel.id %}" class="btn btn-primary">Editar</a>
-                        <a href="{% url 'eliminarHostal' hotel.id %}" class="btn btn-danger">Eliminar</a>
+                        <a href="{% url 'editarHotel' hoteles.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'eliminarHotel' hoteles.id %}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
        
-        <a href="{% url 'agregarHostal' %}" class="btn btn-warning">Crear nuevo Hotel</a>
+        <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear nuevo Hotel</a>
     
 </body>
 </html>

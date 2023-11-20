@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -10,28 +12,26 @@
         <table class="table-bordered">
             <thead>
                 <tr>
-                    <th>Nombre pasajero </th>
-                    <th>Direccion </th>
+                    <th>rut Pasajero </th>
+                    <th>nombre  </th>
                     <th>apellido </th>
-                    <th>llega </th>
-                    <th>salida </th>
                     <th>fono </th>
-                    <th>Rut </th>
+                    <th>llegada </th>
+                    <th>salida </th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for pasajeros in pasajero %}
                 <tr>
-                    <td>{{ pasajeros.nombreHotel }}</td>
-                    <td>{{ pasajeros.direccionHotel }}</td>
-                    <td>{{ pasajeros.habitacionHotel }}</td>
-                    <td>{{ pasajeros.tarifaHotel }}</td>
-                    <td>{{ pasajeros.telefonoHotel }}</td>
-                    <td>{{ pasajeros.mascotaHotel }}</td>
-                    <td>{{ pasajeros.numeroHotel }}</td>
+                    <td>{{ pasajeros.rutClient }}</td>
+                    <td>{{ pasajeros.nombreclient }}</td>
+                    <td>{{ pasajeros.apellidoClient }}</td>
+                    <td>{{ pasajeros.fonoClient }}</td>
+                    <td>{{ pasajeros.llegadaClient }}</td>
+                    <td>{{ pasajeros.salidaClient }}</td>
                     <td>
-                        <a href="{% url 'agregarPasajero' pasajeros.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'editarPasajero' pasajeros.id %}" class="btn btn-primary">Editar</a>
                         <a href="{% url 'eliminarPasajero' pasajeros.id %}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
@@ -39,7 +39,7 @@
             </tbody>
         </table>
        
-        <a href="{% url 'agregarPasajeros' %}" class="btn btn-warning">Registrar pasajeros</a>
+        <a href="{% url 'crearPasajero' %}" class="btn btn-warning">Crear nuevo Hotel</a>
     
 </body>
 </html>

@@ -1,7 +1,7 @@
 from django import forms
-from hotelApp.models import Hotel   
-from hotelApp.models import Habitacion
-from hotelApp.models import Pasajero
+from .models import Hotel   
+from .models import Habitacion
+from .models import Pasajero
 
 class HostalForm(forms.ModelForm):
     class Meta:
@@ -17,9 +17,3 @@ class PasajeroForm(forms.ModelForm):
     class Meta:
         model = Pasajero
         fields = '__all__'
-
-def cleanEmail(self):
-    inputEmail = self.cleaned_data['Correo']
-    if inputEmail.find('@')==1:
-        raise forms.ValidationError("El correo debe disponer @")
-    return inputEmail
