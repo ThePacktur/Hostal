@@ -9,12 +9,11 @@
 </head>
 <body >
     <nav class="container mt-5">
-        <ul>
-            <li><a href="{% url 'crearHotel' %}" class="btn btn-primary">Crear Hotel</a></li>
-            <li><a href="{% url 'crearHabitacion' %}"class="btn btn-primary" >Crear Habitación</a></li>
-            <li><a href="{% url 'crearPasajero' %}" class="btn btn-primary" >Crear Pasajero</a></li>
-            <li><a href="{% url 'admin' %}" class="btn btn-primary" >admin</a></li>
-        </ul>
+        <button type="submit"><a href="{% url 'crearHotel' %}" class="btn btn-primary">Crear Hotel</a> </button>
+        <button type="submit"><a href="{% url 'crearHabitacion' %}"class="btn btn-primary" >Crear Habitación</a></button>
+        <button type="submit"><a href="{% url 'crearPasajero' %}" class="btn btn-primary" >Crear Pasajero</a></button>
+            
+        
     </nav>
     <main>
         {% block content %}
