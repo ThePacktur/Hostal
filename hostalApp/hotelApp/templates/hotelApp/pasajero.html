@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="alert alert-success display-1">Listado de Pasajeros</div>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre pasajero </th>
+                    <th>Direccion </th>
+                    <th>apellido </th>
+                    <th>llega </th>
+                    <th>salida </th>
+                    <th>fono </th>
+                    <th>Rut </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pasajeros in pasajero %}
+                <tr>
+                    <td>{{ pasajeros.nombreHotel }}</td>
+                    <td>{{ pasajeros.direccionHotel }}</td>
+                    <td>{{ pasajeros.habitacionHotel }}</td>
+                    <td>{{ pasajeros.tarifaHotel }}</td>
+                    <td>{{ pasajeros.telefonoHotel }}</td>
+                    <td>{{ pasajeros.mascotaHotel }}</td>
+                    <td>{{ pasajeros.numeroHotel }}</td>
+                    <td>
+                        <a href="{% url 'agregarPasajero' pasajeros.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'eliminarPasajero' pasajeros.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+        <a href="{% url 'agregarPasajeros' %}" class="btn btn-warning">Registrar pasajeros</a>
+    
+</body>
+</html>

@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="">Administrador de Hoteles</a>
-    <a href="">Administrador de Pasajeros</a>
-    <a href="">Administrador de Habitaciones</a>
-    
+    <h1>Crear Habitaciones</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </form>
 </body>
 </html>

@@ -16,7 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hotelApp import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index),
+    path('hoteles/', views.listadoHostal, name='hoteles'),
+    path('habitaciones/', views.listadoHabitacion, name='habitaciones'),
+    path('pasajeros/', views.listadoPasajero, name='pasajeros'),
+    path("agregarHostal/", views.agregarHostal, name='agregarHostal'),
+    path('agregarHabitacion/', views.agregarHabitacion, name='agregarHabitacion'),
+    path('agregarPasajero/', views.agregarPasajero, name='agregarPasajero'),
+    path('eliminarHostal/<int:id>/', views.eliminarHostal, name='eliminarHostal'),
+    path('eliminarHabitacion/<int:id>/', views.eliminarHabitacion, name='eliminarHabitacion'),
+    path('eliminarPasajero/<int:id>/', views.eliminarPasajero, name='eliminarPasajero'),
+    path('actualizarHostal/<int:id>/', views.actualizarHostal, name='actializarHostal'),
+    path('actualizarHabitacion/<int:id>/', views.actualizarHabitacion, name='actualizarHabitacion'),
+    path('actualizarPasajero/<int:id>/', views.actualizarPasajero, name='actualizarPasajero'),
 ]
