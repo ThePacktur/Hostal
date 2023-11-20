@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for hotel in hoteles %}
+                {% for hotel in hoteles %}
                 <tr>
                     <td>{{ hotel.direccionHotel }}</td>
                     <td>{{ hotel.nombreHotel }}</td>
@@ -34,14 +34,14 @@
                     <td>{{ hotel.phoneHotel }}</td>
                     <td>{{ hotel.numberHotel }}</td>
                     <td>
-                        <button><a href="{% url 'editarHotel' hotel.id %}">Editar</a></button>
-                        <button><a href="{% url 'eliminarHotel' hotel.id %}">Eliminar</a></button>
+                        <button><a href="{% url 'editarHotel' hotel.id %}" class="btn btn-danger">Editar</a></button>
+                        <button><a href="{% url 'eliminarHotel' hotel.id %}" class="btn btn-primary">Eliminar</a></button>
                     </td>
                 </tr>
-            {% endfor %}
+                {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'crearHotel' %}">Crear Hotel</a>
-{% endblock %}
+    <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear Hotel</a>
+
 </body>
 </html>

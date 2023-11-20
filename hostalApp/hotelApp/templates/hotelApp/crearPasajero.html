@@ -8,12 +8,17 @@
     <title>creacion de Pasajero</title>
 </head>
 <body>
-    
-    <h1>Crear Pasajero</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
+    <form method="POST" class="needs-validation">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Guardar</button>
+
+            </div>
+            
+        </div>
+        
 
     </form>
 

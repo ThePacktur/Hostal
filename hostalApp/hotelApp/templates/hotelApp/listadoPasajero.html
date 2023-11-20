@@ -31,8 +31,8 @@
                     <td>{{ pasajeros.llegadaClient }}</td>
                     <td>{{ pasajeros.salidaClient }}</td>
                     <td>
-                        <a href="{% url 'editarPasajero' pasajeros.id %}" class="btn btn-primary">Editar</a>
-                        <a href="{% url 'eliminarPasajero' pasajeros.id %}" class="btn btn-danger">Eliminar</a>
+                        <button><a href="{% url 'editarPasajero' pasajeros.id %}" class="btn btn-primary">Editar</a></button>
+                        <button><a href="{% url 'eliminarPasajero' pasajeros.id %}" class="btn btn-danger">Eliminar</a></button>
                     </td>
                 </tr>
                 {% endfor %}
