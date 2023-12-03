@@ -44,8 +44,8 @@ def eliminarHotel(request,id):
 
 def listaHabitacion(request):    
     habitaciones = Habitacion.objects.all()
-    
-    return render(request, 'hotelApp/listadoHabitacion.html', {'habitaciones':habitaciones})
+    hoteles = Hotel.objects.all()
+    return render(request, 'hotelApp/listadoHabitacion.html', {'habitaciones':habitaciones, 'hoteles':hoteles})
 
 def crearHabitacion(request):
     if request.method == 'POST':

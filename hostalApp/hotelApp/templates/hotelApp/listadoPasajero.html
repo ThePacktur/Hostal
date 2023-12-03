@@ -22,24 +22,26 @@
                 </tr>
             </thead>
             <tbody>
-                {% for pasajeros in pasajero %}
+                {% for pasajero in pasajeros %}
                 <tr>
-                    <td>{{ pasajeros.rutClient }}</td>
-                    <td>{{ pasajeros.nombreClient }}</td>
-                    <td>{{ pasajeros.apellidoClint }}</td>
-                    <td>{{ pasajeros.fonoClient }}</td>
-                    <td>{{ pasajeros.llegadaClient }}</td>
-                    <td>{{ pasajeros.salidaClient }}</td>
+                    <td>{{ pasajero.rutClient }}</td>
+                    <td>{{ pasajero.nombreClient }}</td>
+                    <td>{{ pasajero.apellidoClint }}</td>
+                    <td>{{ pasajero.fonoClient }}</td>
+                    <td>{{ pasajero.llegadaClient }}</td>
+                    <td>{{ pasajero.salidaClient }}</td>
                     <td>
-                        <button><a href="{% url 'editarPasajero' pasajeros.id %}" class="btn btn-primary">Editar</a></button>
-                        <button><a href="{% url 'eliminarPasajero' pasajeros.id %}" class="btn btn-danger">Eliminar</a></button>
+                        <button><a href="{% url 'editarPasajero' pasajero.id %}" class="btn btn-primary">Editar</a></button>
+                        <button><a href="{% url 'eliminarPasajero' pasajero.id %}" class="btn btn-danger">Eliminar</a></button>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
        
-        <a href="{% url 'crearPasajero' %}" class="btn btn-warning">Crear nuevo Passajero</a>
+        <a href="{% url 'crearPasajero' %}" class="btn btn-warning">Crear nuevo Pasajero</a>
+        <a href="{% url 'index' %}" class="btn btn-warning">Home</a>
+
     
 </body>
 </html>

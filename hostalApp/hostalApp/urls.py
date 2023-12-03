@@ -34,5 +34,6 @@ urlpatterns = [
     path('crearPasajero/', views.crearPasajero, name='crearPasajero'),
     path('editarPasajero/<int:pasajero_id>/', views.editarPasajero, name='editarPasajero'),
     path('eliminarPasajero/<int:pasajero_id>/', views.eliminarPasajero, name='eliminarPasajero'),
-    path('pedirHabitacion', views.pedirHabitacion, name='pedirHabitacion')
+    path('pedirHabitacion', views.pedirHabitacion, name='pedirHabitacion'),
+    path('listadoPedido', views.listaPedido, name='listadoPedido')
 ]

@@ -21,15 +21,12 @@
             </tr>
         </thead>
         <tbody>
-                {% for hotel in hoteles %}
+                {% for pasajero_habitacion in PasajeroHabitacion %}
                 <tr>
-                    <td>{{ hotel.direccionHotel }}</td>
-                    <td>{{ hotel.nombreHotel }}</td>
-                    <td>{{ hotel.habitacionHotel }}</td>
-                    <td>{{ hotel.tarifaHotel }}</td>
-                    <td>{{ hotel.phoneHotel }}</td>
-                    <td>{{ hotel.numberHotel }}</td>
-                    <td>
+                    <td>{{ pasajero_habitacion.id }}</td>
+                    <td>{{ pasajero_habitacion.pasajero }}</td>
+                    <td>{{ pasajero_habitacion.habitacion }}</td>
+                    <td>{{ pasajero_habitacion.hotel }}</td>
                         <button><a href="{% url 'editarHotel' hotel.id %}" class="btn btn-danger">Editar</a></button>
                         <button><a href="{% url 'eliminarHotel' hotel.id %}" class="btn btn-primary">Eliminar</a></button>
                     </td>
@@ -37,7 +34,8 @@
                 {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear Hotel</a>
+    <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear pedido</a>
+    <a href="{% url 'index' %}" class="btn btn-warning">Home</a>
 
 </body>
 </html>

@@ -14,7 +14,8 @@
             <div class="col-md-4 mb-3">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary " href={{% url "listadoPedido" %}}>Guardar</button>
+                <a href="{% url 'index' %}" class="btn btn-warning">Home</a>
             </div>
         </div>
     </form>

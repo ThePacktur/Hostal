@@ -13,7 +13,7 @@ class Hotel(models.Model):
     numberHotel = models.IntegerField(verbose_name="Numero de la direccion del hotel")
     
     def __str__(self):
-        return f'{self.nombreHotel} - {self.direccionHotel}'
+        return f'{self.nombreHotel} - {self.direccionHotel} #{self.numberHotel}'
 
 class Habitacion(models.Model):
     id = models.AutoField(primary_key=True)
