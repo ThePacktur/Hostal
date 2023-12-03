@@ -8,21 +8,18 @@
     <title>Creacion Habitaciones</title>
 </head>
 <body>
-    
-    <h1>Crear Habitaciones</h1>
-    <form method="POST" class="needs-validation">
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Guardar</button>
-
+    <table>
+        <h1>Crear Habitaciones</h1>
+        <form method="POST" class="needs-validation">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
             </div>
-            
-        </div>
-        
-
-    </form>
-
+        </form>
+    </table>
+    <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear Hotel</a>
 </body>
 </html>

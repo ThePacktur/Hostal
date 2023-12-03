@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Servicios De Hoteles</title>
+</head>
+<body>
+    <div class="alert alert-success display-1">Listado de habitaciones pedidas</div>
+    
+    <h2>Listado de habitaciones pedidas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Direccion</th>
+                <th>Nombre Hotel</th>
+                <th>Número de Habitación</th>
+                <th>Tarifa</th>
+                <th>Teléfono</th>
+                <th>Numero Hotel</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for hotel in hoteles %}
+                <tr>
+                    <td>{{ hotel.direccionHotel }}</td>
+                    <td>{{ hotel.nombreHotel }}</td>
+                    <td>{{ hotel.habitacionHotel }}</td>
+                    <td>{{ hotel.tarifaHotel }}</td>
+                    <td>{{ hotel.phoneHotel }}</td>
+                    <td>{{ hotel.numberHotel }}</td>
+                    <td>
+                        <button><a href="{% url 'editarHotel' hotel.id %}" class="btn btn-danger">Editar</a></button>
+                        <button><a href="{% url 'eliminarHotel' hotel.id %}" class="btn btn-primary">Eliminar</a></button>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear Hotel</a>
+
+</body>
+</html>

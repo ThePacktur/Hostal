@@ -5,6 +5,8 @@ from hotelApp.models import Habitacion
 from hotelApp.forms import HabitacionForm
 from hotelApp.models import Pasajero
 from hotelApp.forms import PasajeroForm
+from hotelApp.forms import PasajeroHabitacion
+from hotelApp.forms import PasajeroHabitacionForm
 
 
 # Create your views here.
@@ -98,3 +100,13 @@ def eliminarPasajero(request, pasajero_id):
     pasajero = get_list_or_404(Pasajero, pk=pasajero_id)
     pasajero.delete()
     return redirect('/listaPasajeros')
+
+def pedirHabitacion(request):
+    if request.method == 'POST':
+        form = PasajeroHabitacionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/listaHotel')
+    else:
+        form = HostalForm()
+    return render(request, 'hotelApp/crearHotel.html', {'form': form})
