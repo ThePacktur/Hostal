@@ -5,12 +5,12 @@ from django.db import models
 
 class Hotel(models.Model):
     id = models.AutoField(primary_key=True)
-    direccionHotel = models.CharField(max_length=255)
-    nombreHotel = models.CharField(max_length=255)
-    habitacionHotel = models.IntegerField()
-    tarifaHotel = models.FloatField()
-    phoneHotel = models.CharField(max_length=15)
-    numberHotel = models.IntegerField()
+    direccionHotel = models.CharField(max_length=255, verbose_name='Direccion del hotel')
+    nombreHotel = models.CharField(max_length=255, verbose_name='Nombre del hotel')
+    habitacionHotel = models.IntegerField(verbose_name='Numero de habitaciones')
+    tarifaHotel = models.FloatField(verbose_name='Tarifa del hotel')
+    phoneHotel = models.CharField(max_length=15, verbose_name='Numero de telefono del hotel')
+    numberHotel = models.IntegerField(verbose_name="Numero de la direccion del hotel")
     
     def __str__(self):
         return f'{self.nombreHotel} - {self.direccionHotel}'
@@ -24,29 +24,24 @@ class Habitacion(models.Model):
         null=True,
         verbose_name='Dirección del Hotel'
     )
-    habitacion = models.CharField(max_length=255)
-    capacidad = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    terraza = models.BooleanField()
-    cocina = models.BooleanField()  
-    disponibilidad = models.BooleanField()
+    habitacion = models.CharField(max_length=255, verbose_name='Numero de la habitacion')
+    capacidad = models.IntegerField(verbose_name='Capacidad de la habitacion')
+    precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio de la habitacion')
+    terraza = models.BooleanField(verbose_name='¿Hay terraza?')
+    cocina = models.BooleanField(verbose_name='¿Hay cocina?')  
+    disponibilidad = models.BooleanField('¿Esta disponible?')
     
     def __str__(self):
-        return f"{self.habitacion} - {self.idHotel.direccionHotel if self.idHotel else 'Sin dirección'}"
+        return self.habitacion
 
 class Pasajero(models.Model):
     id = models.AutoField(primary_key=True)
-    rutClient = models.CharField(max_length=15)
-    nombreClient = models.CharField(max_length=255)
-    apellidoClient = models.CharField(max_length=255)
-    fonoClient = models.CharField(max_length=15)
-    llegadaClient = models.CharField(max_length=23)
-    salidaClient = models.CharField(max_length=23)
-    pedir = models.ManyToManyField(
-        Habitacion,
-        through="PasajeroHabitacion",
-        blank=True
-    )
+    rutClient = models.CharField(max_length=15, verbose_name='Rut')
+    nombreClient = models.CharField(max_length=255, verbose_name='Nombre')
+    apellidoClient = models.CharField(max_length=255, verbose_name='Apellido')
+    fonoClient = models.CharField(max_length=15, verbose_name='Numero telefonico')
+    llegadaClient = models.CharField(max_length=23, verbose_name='Día de llega')
+    salidaClient = models.CharField(max_length=23, verbose_name='Dia de salida')
 
     def __str__(self):
         return self.rutClient
@@ -57,19 +52,22 @@ class PasajeroHabitacion(models.Model):
         Pasajero,
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        verbose_name='Nombre del Pasajero'
     )
     habitacion = models.ForeignKey(
         Habitacion,
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        verbose_name='Numero de habitacion'
     )
     hotel=models.ForeignKey(
         Hotel,
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        verbose_name='Direccion'
     )
     
     class meta:

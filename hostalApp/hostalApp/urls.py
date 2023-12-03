@@ -21,7 +21,7 @@ from hotelApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    path('',views.index, name="index"),
     path('listaHotel/', views.listaHotel, name='listarHotel'), 
     path('listaHabitacion/', views.listaHabitacion, name='listaHabitacion'),
     path('listaPasajero/', views.listaPasajero, name='listaPasajero'), 

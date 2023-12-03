@@ -84,8 +84,8 @@ def crearPasajero(request):
         form = PasajeroForm()
     return render(request, 'hotelApp/crearPasajero.html', {'form': form})
 
-def editarPasajero(request, pasajero_id):
-    pasajero = get_list_or_404(Pasajero, pk=pasajero_id)
+def editarPasajero(request, id):
+    pasajero = get_list_or_404(Pasajero, id=id)
     if request.method == 'POST':
         form = PasajeroForm(request.POST, instance=pasajero)
         if form.is_valid():
@@ -96,8 +96,8 @@ def editarPasajero(request, pasajero_id):
     return render(request, 'hotelApp/editarPasajero.html', {'form': form, 'pasajero': pasajero})
 
 
-def eliminarPasajero(request, pasajero_id):
-    pasajero = get_list_or_404(Pasajero, pk=pasajero_id)
+def eliminarPasajero(request, id):
+    pasajero = get_list_or_404(Pasajero, id=id)
     pasajero.delete()
     return redirect('/listaPasajeros')
 
@@ -106,7 +106,11 @@ def pedirHabitacion(request):
         form = PasajeroHabitacionForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/listaHotel')
+            return redirect('/')
     else:
-        form = HostalForm()
-    return render(request, 'hotelApp/crearHotel.html', {'form': form})
+        form = PasajeroHabitacionForm()
+    return render(request, 'hotelApp/pedirHabitacion.html', {'form': form})
+
+def listaPedido(request):
+    pedido = PasajeroHabitacionForm.objects.all()
+    return render(request, 'hotelApp/listadoPasajero.html', {'PasajeroHabitacion': pedido})
