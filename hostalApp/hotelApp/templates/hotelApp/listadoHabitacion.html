@@ -34,9 +34,11 @@
                         <td>{{habit.habitacion}}</td>
                         <td>{{habit.capacidad}}</td>
                         <td>{{habit.precio}}</td>
-                        <td>{{habit.terraza}}</td>
-                        <td>{{habit.cocina}}</td>
-                        <td>{{habit.disponibilidad}}</td>
+                        {% comment %} https://code.djangoproject.com/ticket/14333 {% endcomment %}
+                        {% comment %} Objetivo: Cambiar los booleanos por verbos más explicitos {% endcomment %}
+                        <td>{% if habit.terraza == True %}Si{% else %}No{% endif %}</td>
+                        <td>{% if habit.cocina == True %}Si{% else %}No{% endif %}</td>
+                        <td>{% if habit.disponibilidad == True %}Si{% else %}No{% endif %}</td>
                         <td>
                             <button><a href="{% url 'editarHabitacion' habit.id %}" class="btn btn-primary">Editar</a></button>
                             <button><a href="{% url 'eliminarHabitacion' habit.id %}" class="btn btn-danger">Eliminar</a></button>
