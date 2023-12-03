@@ -65,6 +65,7 @@ def editarHabitacion(request, id):
         return redirect('/listaHabitacion')
     return render(request,'hotelApp/editarHabitacion.html', {'form':form, 'habitacion':habitacion })
 
+
 def eliminarHabitacion(request,id):
     habitacion = Habitacion.objects.get(id=id)
     habitacion.delete()
@@ -85,21 +86,26 @@ def crearPasajero(request):
     return render(request, 'hotelApp/crearPasajero.html', {'form': form})
 
 def editarPasajero(request, id):
-    pasajero = get_list_or_404(Pasajero, id=id)
-    if request.method == 'POST':
-        form = PasajeroForm(request.POST, instance=pasajero)
-        if form.is_valid():
-            form.save()
-            return redirect('/listaPasajeros')
-    else:
-        form = PasajeroForm(instance=pasajero)
+    pasajero =  Pasajero.objects.get(id=id)
+    form = PasajeroForm(request.POST or None, instance=pasajero)
+    if form.is_valid() and request.POST:
+        form.save()
+        return redirect('/listaPasajeros')
     return render(request, 'hotelApp/editarPasajero.html', {'form': form, 'pasajero': pasajero})
 
+def editarHotel(request, id):
+    hotel = Hotel.objects.get(id=id)
+    form = HostalForm(request.POST or None, instance=hotel)
+    if form.is_valid() and request.POST:
+        form.save()
+        return redirect('/listaHotel')
+    return render(request,'hotelApp/editarHotel.html', {'form':form, 'hotel':hotel })
 
 def eliminarPasajero(request, id):
-    pasajero = get_list_or_404(Pasajero, id=id)
+    pasajero = Pasajero.objects.get(id=id)
     pasajero.delete()
-    return redirect('/listaPasajeros')
+    return redirect('/listaPasajero/')
+
 
 def pedirHabitacion(request):
     if request.method == 'POST':

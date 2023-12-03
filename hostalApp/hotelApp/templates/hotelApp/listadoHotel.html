@@ -12,27 +12,27 @@
     <div class="alert alert-success display-1">Listado de hoteles</div>
     
     <h2>Listado de Hoteles</h2>
-    <table>
+    <table class="table-bordered">
         <thead>
             <tr>
-                <th>Direccion</th>
                 <th>Nombre Hotel</th>
+                <th>Direccion</th>
+                <th>Numero Hotel</th>
                 <th>Número de Habitación</th>
                 <th>Tarifa</th>
                 <th>Teléfono</th>
-                <th>Numero Hotel</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
                 {% for hotel in hoteles %}
                 <tr>
-                    <td>{{ hotel.direccionHotel }}</td>
                     <td>{{ hotel.nombreHotel }}</td>
+                    <td>{{ hotel.direccionHotel }}</td>
+                    <td>#{{ hotel.numberHotel }}</td> 
                     <td>{{ hotel.habitacionHotel }}</td>
                     <td>{{ hotel.tarifaHotel }}</td>
                     <td>{{ hotel.phoneHotel }}</td>
-                    <td>{{ hotel.numberHotel }}</td>   
                     <td>
                         <button><a href="{% url 'editarHotel' hotel.id %}" class="btn btn-danger">Editar</a></button>
                         <button><a href="{% url 'eliminarHotel' hotel.id %}" class="btn btn-primary">Eliminar</a></button>

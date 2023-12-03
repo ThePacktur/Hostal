@@ -13,11 +13,11 @@
             <thead>
                 <tr>
                     <th>rut Pasajero </th>
-                    <th>nombre  </th>
-                    <th>apellido </th>
-                    <th>fono </th>
-                    <th>llegada </th>
-                    <th>salida </th>
+                    <th>nombre</th>
+                    <th>apellido</th>
+                    <th>fono</th>
+                    <th>llegada</th>
+                    <th>salida</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -26,13 +26,13 @@
                 <tr>
                     <td>{{ pasajero.rutClient }}</td>
                     <td>{{ pasajero.nombreClient }}</td>
-                    <td>{{ pasajero.apellidoClint }}</td>
+                    <td>{{ pasajero.apellidoClient }}</td>
                     <td>{{ pasajero.fonoClient }}</td>
                     <td>{{ pasajero.llegadaClient }}</td>
                     <td>{{ pasajero.salidaClient }}</td>
                     <td>
-                        <button><a href="{% url 'editarPasajero' pasajero.id %}" class="btn btn-primary">Editar</a></button>
-                        <button><a href="{% url 'eliminarPasajero' pasajero.id %}" class="btn btn-danger">Eliminar</a></button>
+                        <button><a href="/editarPasajero/{{ pasajero.id }}" class="btn btn-primary">Editar</a></button>
+                        <button><a href="/eliminarPasajero/{{ pasajero.id }}" class="btn btn-danger">Eliminar</a></button>
                     </td>
                 </tr>
                 {% endfor %}

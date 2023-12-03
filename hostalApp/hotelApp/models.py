@@ -5,12 +5,12 @@ from django.db import models
 
 class Hotel(models.Model):
     id = models.AutoField(primary_key=True)
-    direccionHotel = models.CharField(max_length=255, verbose_name='Direccion del hotel')
     nombreHotel = models.CharField(max_length=255, verbose_name='Nombre del hotel')
+    direccionHotel = models.CharField(max_length=255, verbose_name='Direccion del hotel')
+    numberHotel = models.IntegerField(verbose_name="Numero de la direccion del hotel")
     habitacionHotel = models.IntegerField(verbose_name='Numero de habitaciones')
     tarifaHotel = models.FloatField(verbose_name='Tarifa del hotel')
     phoneHotel = models.CharField(max_length=15, verbose_name='Numero de telefono del hotel')
-    numberHotel = models.IntegerField(verbose_name="Numero de la direccion del hotel")
     
     def __str__(self):
         return f'{self.nombreHotel} - {self.direccionHotel} #{self.numberHotel}'
