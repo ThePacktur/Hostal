@@ -12,9 +12,10 @@
     <div class="alert alert-success display-1">Listado de habitaciones pedidas</div>
     
     <h2>Listado de habitaciones pedidas</h2>
-    <table>
+    <table class="table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Pasajero</th>
                 <th>Habitacion</th>
                 <th>Hotel</th>
@@ -27,9 +28,10 @@
                     <td>{{ pasajero_habitacion.pasajero }}</td>
                     <td>{{ pasajero_habitacion.habitacion }}</td>
                     <td>{{ pasajero_habitacion.hotel }}</td>
+{% comment %}                     <td>
                         <button><a href="{% url 'editarHotel' hotel.id %}" class="btn btn-danger">Editar</a></button>
                         <button><a href="{% url 'eliminarHotel' hotel.id %}" class="btn btn-primary">Eliminar</a></button>
-                    </td>
+                    </td> {% endcomment %}
                 </tr>
                 {% endfor %}
         </tbody>

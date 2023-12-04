@@ -30,10 +30,10 @@
                     <tr>
                         <td>{{hotel.nombreHotel}}</td>
                         <td>{{hotel.direccionHotel}}</td>
-                        <td>{{hotel.numberHotel}}</td>
+                        <td>#{{hotel.numberHotel}}</td>
                         <td>{{habit.habitacion}}</td>
                         <td>{{habit.capacidad}}</td>
-                        <td>{{habit.precio}}</td>
+                        <td>${{habit.precio}}</td>
                         {% comment %} https://code.djangoproject.com/ticket/14333 {% endcomment %}
                         {% comment %} Objetivo: Cambiar los booleanos por verbos más explicitos {% endcomment %}
                         <td>{% if habit.terraza == True %}Si{% else %}No{% endif %}</td>

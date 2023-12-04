@@ -5,7 +5,7 @@ from hotelApp.models import Habitacion
 from hotelApp.forms import HabitacionForm
 from hotelApp.models import Pasajero
 from hotelApp.forms import PasajeroForm
-from hotelApp.forms import PasajeroHabitacion
+from hotelApp.models import PasajeroHabitacion
 from hotelApp.forms import PasajeroHabitacionForm
 
 
@@ -112,11 +112,11 @@ def pedirHabitacion(request):
         form = PasajeroHabitacionForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/listadoPedido')
     else:
         form = PasajeroHabitacionForm()
     return render(request, 'hotelApp/pedirHabitacion.html', {'form': form})
 
 def listaPedido(request):
-    pedido = PasajeroHabitacionForm.objects.all()
-    return render(request, 'hotelApp/listadoPasajero.html', {'PasajeroHabitacion': pedido})
+    pedido = PasajeroHabitacion.objects.all()
+    return render(request, 'hotelApp/listadoPedido.html', {'PasajeroHabitacion': pedido})
