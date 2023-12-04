@@ -14,14 +14,6 @@ class HabitacionForm(forms.ModelForm):
         model = Habitacion
         fields = '__all__'
         
-#class HabitacionForm(forms.ModelForm):
-#    direccion = forms.ModelChoiceField(queryset=Hotel.objects.all(), required=False, label='Dirección del Hotel')
-#
-#    class Meta:
-#        model = Habitacion
-#        fields = '__all__'
-#        ['habitacion', 'capacidad', 'precio', 'terraza', 'cocina', 'disponibilidad']
-
 class PasajeroForm(forms.ModelForm):
     class Meta:
         model = Pasajero

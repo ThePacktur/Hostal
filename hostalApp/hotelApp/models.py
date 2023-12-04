@@ -1,5 +1,12 @@
 from django.db import models
-#Source
+#pip install django-bootstrap-datepicker-plus
+#objetivo: Proporcionar un calendario visual para seleccionar fecha
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+#pip install "django-phonenumber-field[phonenumbers]"
+#Objetivo: Agregar un field que ayude a obtener un numero telefonico que inicie con su codigo de pais según  ISO 3166-1
+from phonenumber_field.modelfields import PhoneNumberField
+
+#Source del ManytoMany
 #https://www.youtube.com/watch?v=hX8Mcj3-8hk&t=190s
 # Create your models here.
 
@@ -10,7 +17,7 @@ class Hotel(models.Model):
     numberHotel = models.IntegerField(verbose_name="Numero de la direccion del hotel")
     habitacionHotel = models.IntegerField(verbose_name='Numero de habitaciones')
     tarifaHotel = models.FloatField(verbose_name='Tarifa del hotel')
-    phoneHotel = models.CharField(max_length=15, verbose_name='Numero de telefono del hotel')
+    phoneHotel = PhoneNumberField(region="CL",blank=True, verbose_name='Numero de telefono del hotel',max_length=15)
     
     def __str__(self):
         return f'{self.nombreHotel} - {self.direccionHotel} #{self.numberHotel}'
@@ -40,8 +47,8 @@ class Pasajero(models.Model):
     nombreClient = models.CharField(max_length=255, verbose_name='Nombre')
     apellidoClient = models.CharField(max_length=255, verbose_name='Apellido')
     fonoClient = models.CharField(max_length=15, verbose_name='Numero telefonico')
-    llegadaClient = models.CharField(max_length=23, verbose_name='Día de llega')
-    salidaClient = models.CharField(max_length=23, verbose_name='Dia de salida')
+    llegadaClient = models.DateTimeField( verbose_name='Día de llega', widget=DateTimePickerInput())
+    salidaClient = models.DateTimeField( verbose_name='Dia de salida', widget=DateTimePickerInput())
 
     def __str__(self):
         return self.rutClient

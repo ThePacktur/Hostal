@@ -120,3 +120,16 @@ def pedirHabitacion(request):
 def listaPedido(request):
     pedido = PasajeroHabitacion.objects.all()
     return render(request, 'hotelApp/listadoPedido.html', {'PasajeroHabitacion': pedido})
+
+def editaPedido(request, id):
+    pedido = PasajeroHabitacion.objects.get(id=id)
+    form = PasajeroHabitacionForm(request.POST or None, instance=pedido)
+    if form.is_valid() and request.POST:
+        form.save()
+        return redirect('/listadoPedido')
+    return render(request,'hotelApp/editarPedido.html', {'form':form, 'PasajeroHabitacion':pedido })
+
+def eliminarPedido(request, id):
+    pedido = PasajeroHabitacion.objects.get(id=id)
+    pedido.delete()
+    return redirect('/listadoPedido/')

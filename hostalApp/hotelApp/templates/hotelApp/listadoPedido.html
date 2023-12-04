@@ -28,10 +28,10 @@
                     <td>{{ pasajero_habitacion.pasajero }}</td>
                     <td>{{ pasajero_habitacion.habitacion }}</td>
                     <td>{{ pasajero_habitacion.hotel }}</td>
-{% comment %}                     <td>
-                        <button><a href="{% url 'editarHotel' hotel.id %}" class="btn btn-danger">Editar</a></button>
-                        <button><a href="{% url 'eliminarHotel' hotel.id %}" class="btn btn-primary">Eliminar</a></button>
-                    </td> {% endcomment %}
+                    <td>
+                        <button><a href="/editarPasajeroHabitacion/{{ pasajero_habitacion.id }}" class="btn btn-danger">Editar</a></button>
+                        <button><a href="/eliminarPasajeroHabitacion/{{ pasajero_habitacion.id }}" class="btn btn-primary">Eliminar</a></button>
+                    </td>
                 </tr>
                 {% endfor %}
         </tbody>
