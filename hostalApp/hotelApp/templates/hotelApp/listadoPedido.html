@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Servicios De Hoteles</title>
+</head>
+<body>
+    <div class="alert alert-success display-1">Listado de habitaciones pedidas</div>
+    
+    <h2>Listado de habitaciones pedidas</h2>
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pasajero</th>
+                <th>Habitacion</th>
+                <th>Hotel</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for pasajero_habitacion in PasajeroHabitacion %}
+                <tr>
+                    <td>{{ pasajero_habitacion.id }}</td>
+                    <td>{{ pasajero_habitacion.pasajero }}</td>
+                    <td>{{ pasajero_habitacion.habitacion }}</td>
+                    <td>{{ pasajero_habitacion.hotel }}</td>
+                    <td>
+                        <button><a href="/editarPasajeroHabitacion/{{ pasajero_habitacion.id }}" class="btn btn-danger">Editar</a></button>
+                        <button><a href="/eliminarPasajeroHabitacion/{{ pasajero_habitacion.id }}" class="btn btn-primary">Eliminar</a></button>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crearHotel' %}" class="btn btn-warning">Crear pedido</a>
+    <a href="{% url 'index' %}" class="btn btn-warning">Home</a>
+
+</body>
+</html>

@@ -21,7 +21,7 @@ from hotelApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    path('',views.index, name="index"),
     path('listaHotel/', views.listaHotel, name='listarHotel'), 
     path('listaHabitacion/', views.listaHabitacion, name='listaHabitacion'),
     path('listaPasajero/', views.listaPasajero, name='listaPasajero'), 
@@ -32,6 +32,10 @@ urlpatterns = [
     path('editarHabitacion/<int:habitacion_id>/', views.editarHabitacion, name='editarHabitacion'),
     path('eliminarHabitacion/<int:habitacion_id>/', views.eliminarHabitacion, name='eliminarHabitacion'),
     path('crearPasajero/', views.crearPasajero, name='crearPasajero'),
-    path('editarPasajero/<int:pasajero_id>/', views.editarPasajero, name='editarPasajero'),
-    path('eliminarPasajero/<int:pasajero_id>/', views.eliminarPasajero, name='eliminarPasajero'),
+    path('editarPasajero/<int:id>/', views.editarPasajero, name='editarPasajero'),
+    path('eliminarPasajero/<int:id>/', views.eliminarPasajero, name='eliminarPasajero'),
+    path('pedirHabitacion', views.pedirHabitacion, name='pedirHabitacion'),
+    path('listadoPedido', views.listaPedido, name='listadoPedido'),
+    path('editarPasajeroHabitacion/<int:id>',views.editaPedido, name='editarPedido'),
+    path('eliminarPasajeroHabitacion/<int:id>',views.editaPedido, name='eliminarPedido')
 ]

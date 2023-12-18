@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Pedir habitacion</title>
+</head>
+<body>
+    <h1>Pedir Habitacion</h1>
+    <form method="POST" class="needs-validation">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary " href={% url "listadoPedido" %}>Guardar</button>
+                <a href="{% url 'index' %}" class="btn btn-warning">Home</a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
